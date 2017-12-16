@@ -105,6 +105,12 @@ function init() {
 
 var map;
 
+
+ mapError = function mapError() {
+  // Error handling
+  alert("Try Again");
+};
+
 function ViewModel() {
   var self = this;
 
@@ -129,16 +135,18 @@ function ViewModel() {
                 var response = marker.response.venues[0];
                 self.street = response.location.formattedAddress[0];
                 self.city = response.location.formattedAddress[1];
-                self.country = response.location.formattedAddress[4];
+
+                self.country = response.location.formattedAddress[3];
                
 
                 self.htmlContentFoursquare =
-                    '</h5>' + '<div>' +
+                     '<div>' +
                     '<h6 > Address: </h6>' +
                     '<p >' + self.street + '</p>' +
                     '<p >' + self.city + '</p>' +
                     '<p >' + self.country +
-                    '</p>' + '</div>' ;
+                    '</p>' + '</div>' + '</div>';
+
 
                 infowindow.setContent(self.htmlContent + self.htmlContentFoursquare);
             }).fail(function() {
@@ -148,7 +156,8 @@ function ViewModel() {
                 );
             });
 
-           
+            this.htmlContent = '<div>' + '<h4 >' + marker.title +
+                '</h4>';
 
 
       infowindow.open(map, marker);
@@ -231,10 +240,7 @@ function ViewModel() {
     }
     return output;
   }, this);
-  mapError = function mapError() {
-  // Error handling
-  alert("Try Again");
-};
+ 
 }
 
 
