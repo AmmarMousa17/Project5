@@ -116,7 +116,41 @@ function ViewModel() {
     // Check to make sure the infowindow is not already opened on this marker.
     if (infowindow.marker != marker) {
       infowindow.marker = marker;
-      infowindow.setContent('<div>' + marker.title + '</div>');
+
+      infowindow.setContent('');
+    
+          
+            var ResultUrl = 'https://api.foursquare.com/v2/venues/search?ll=' +
+                marker.lat + ',' + marker.lng + '&client_id=' + "AZ2GYXWXZYR12QFQN0TX2JJI1HRQLR3ISF5EDGMYTL2IVHSO" +
+                '&client_secret=' + "OKWDPH2AD53XMM23GHIEKPDZQWKIAYIQZYAUASRMAQC1FJSB" + '&query=' + marker.title +
+                '&v=20170708' + '&m=foursquare';
+            
+            $.getJSON(ResultUrl).done(function(marker) {
+                var response = marker.response.venues[0];
+                self.street = response.location.formattedAddress[0];
+                self.city = response.location.formattedAddress[1];
+                self.country = response.location.formattedAddress[4];
+               
+
+                self.htmlContentFoursquare =
+                    '</h5>' + '<div>' +
+                    '<h6 > Address: </h6>' +
+                    '<p >' + self.street + '</p>' +
+                    '<p >' + self.city + '</p>' +
+                    '<p >' + self.country +
+                    '</p>' + '</div>' ;
+
+                infowindow.setContent(self.htmlContent + self.htmlContentFoursquare);
+            }).fail(function() {
+                
+                alert(
+                    "ERROR ON fOURSQUARE"
+                );
+            });
+
+           
+
+
       infowindow.open(map, marker);
       // Make sure the marker property is cleared if the infowindow is closed.
       infowindow.addListener('closeclick', function () {
@@ -197,7 +231,7 @@ function ViewModel() {
     }
     return output;
   }, this);
-  mapError = () => {
+  mapError = function mapError() {
   // Error handling
   alert("Try Again");
 };
