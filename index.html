@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   
+
+    <title> Neighborhood Map Project</title>
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" >
+
+    
+    <link rel="stylesheet" href="css/App.css">
+</head>
+ 
+<body>
+    <div class="container">
+        <div class="raw">
+    <div class="search" >
+        <input class="box"  data-bind="textInput: search, valueUpdate: 'afterkeydown'" placeholder="Filter Your Neighbour" />
+    </div>
+    <div class="All" id="All">
+        <div class="list" id="list">
+            <ul class="results" data-bind="foreach: Locations">
+                <li class="location"  data-bind="text: title, click: $parent.Info"></li>
+            </ul>
+          
+        </div>
+         <div class="map" id="map"></div>
+    </div>
+
+   </div>
+           </div>     
+    
+
+    
+
+   
+
+   <script scr="js/jquery-3.2.1.js"></script>
+<script
+        src="js/knockout-3.4.2.js" charset="utf-8">
+    </script>
+    
+
+    <script
+        src="js/app.js" charset="utf-8">
+    </script>
+
+ 
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDc-R4IDDi17A7C9OvkXHM87tyLvfo0gTY&callback=init">
+    </script>
+</body>
+</html>

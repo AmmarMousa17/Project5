@@ -1,0 +1,66 @@
+html,body {
+    margin: 0;
+
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    
+    float: right;
+}
+
+.box {
+   
+    height: 50px;
+    font-size: 1em;
+    padding: 5px 20px;
+    float: right;
+    width: 25%;
+}
+
+.All {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.list {
+  
+    flex-grow: 1;
+    background-color: #999;
+  
+}
+
+.map {
+   
+    flex-grow:5;
+    background-color: #fff;
+    text-align: center;
+    height: 1000px;
+}
+
+
+.location {
+    margin: 10px;
+    padding: 10px;
+    list-style: none;
+    background-color: #999;
+    color: white;
+}
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .search {
+        font-size: .7em;
+        margin-top: 5px;
+    }
+
+    
+.list {
+    font-size: 1.5em;
+}
+}
